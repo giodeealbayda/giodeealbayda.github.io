@@ -12,7 +12,7 @@ permalink: /junit-basics/
 <br>
 > Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
 
-####Copy Sample Codes from Git repository
+####Copy Sample Application
 
 1. Open a terminal window and create the directory `tradeoff-analytics` in the root directory.  Go to the created directory.
 
@@ -23,12 +23,8 @@ permalink: /junit-basics/
 
 	<br>
 	
-2. Download the <a href="https://github.com/giodeealbayda/tradeoffanalytics1/blob/master/tradeoffanalytics1.war?raw=true">`tradeoffanalytics1.war`</a> file and place it inside the `tradeoffanalytics1` directory.
+2. Download the <a href="https://github.com/giodeealbayda/tradeoffanalytics1/blob/master/tradeoffanalytics1.war?raw=true">`tradeoffanalytics1.war`</a> file and place it inside the `tradeoffanalytics` directory.
 
-	```
-	> cd tradeoffanalytics1
-	```
- 
 	The `tradeoffanalytics1` directory has two subdirectories: `src` and `build`.
 
 	```
@@ -72,318 +68,298 @@ permalink: /junit-basics/
 
 	<br>
 
-####Examine the Java class to be tested
+####Deploy Sample Application in Bluemix using the `cf` tool.
 
 
-1. Let's examine the sample class `Math.java` which you will test later with JUnit.
- 
-	**Source code** of	`src/main/java/net/tutorial/Math.java`:
- 
-	```java
-	package net.tutorial;
-	
-	public class Math{
-	
-	  //will be used in the multiply method to simulate that
-	  //the multiply method is taking too long to execute
-	  private void delay(){
-		try{
-	      Thread.sleep(3000);//3000 msec. or 3 sec. delay
-	    } catch(InterruptedException ex) {
-	      Thread.currentThread().interrupt();
-	    }
-	  }
-	
-	  public int add(int a, int b){
-	    //a-b is used instead of a+b to simulate
-	    //a possible error in the source code
-	    return a-b;
-	  }
-	
-	  public int sub(int a, int b){
-	    return a-b;
-	  }
-	
-	  public int multiply(int a, int b){
-		//added delay to simulate that this method is 
-	    //taking too long to execute	
-		delay();
-	
-	    return a*b;
-	  }
-	}
+1. Open a terminal window and go to the `tradeoffanalytics` directory.
+2. Login to your Bluemix account using the `cf` tool.
 	```
- 
-	`Math.java` contains the methods you want to test: `add`, `sub`, and `multiply`.  
- 
-	The `add` method is intentionally made incorrect by using `return a-b;` instead of `return a+b;` to demonstrate errors that may be detected by JUnit.
-
-	The `multiply` method contains the line `delay();` to force the `multiply` method to execute for more than 3 secs.  This is useful when you demonstrate the concept of timeout in JUnit.
-
-	The `sub` method is included to serve as a control.  Since the implementation of `sub` is correct, JUnit should not report any error involving `sub`.
- 
-	<br>
-
-1. `Math.java` may be used by other Java classes to create an application. An example of this is `Calculator.java`.
-
-	**Source code** of	`src/main/java/net/tutorial/Calculator.java`:
- 
-	```java
-	package net.tutorial;
-	
-	public class Calculator{
-	
-	  public static void main (String args[]){
-	    Math m = new Math();
-		
-		System.out.println("5 + 9 = " + m.add(5, 3));
-		
-		System.out.println("8 - 2 = " + m.sub(8, 2));	
-		
-		System.out.println("4 x 7 = " + m.multiply(4, 7));
-	  }
-	}
+	> cf login -a https://api.ng.bluemix.net -s dev
 	```
+3. Upload the sample application to your Bluemix account.
+	```
+	> cf push tradeoffanalytics-< your_name > -m 256M -p tradeoffanalytics1.war
+	```
+	**Example:**
+	```
+	> cf push tradeoffanalytics-giodee -m 256M -p tradeoffanalytics1.war
+	```
+4. Go back to the browser tab containing your Bluemix account. In the menu, click `DASHBOARD`.
+   The `Applications` section of your dashboard shows a widget representing the application `tradeoffanalytics-<your_name>` you deployed earlier.
+5. Click the widget of your application to see its overview.
 
-	`Calculator.java` represents a sample application that uses the `Math.java` class.  
+####Add a Tradeoff Analytics Service and Bind it to the Sample Application
+1. On the left pane, click the `Overview` link.
+2. Click the `ADD A SERVICE OR API` link. You will be redirected to the `Catalog` page.
+3. Look for the `Tradeoff Analytics` service and click it.
+4. Click the `CREATE` button.
+5. When asked to restage your application, click the `RESTAGE` button. Wait for your application to restage.
+6. Open another broswer tab (do not close the browser tabl containing your Bluemix account). Go to `tradeoffanalytics-<your_name>.mybluemix.net/newjsp1.jsp` to test if the sample application can already connect to the created Tradeoff Analytics Service.
 
-	<br>
- 
-1. Compile `Math.java` and `Calculator.java`.
+####Analyze How the Sample Application and Tradeoff Analytics Service Works
+1. In order for the functions of the Tradeoff Analytics service to work, `Gradle` is required to download the libraries needed to solve the dependency
+2. 
 
+####Copy a Github Repository
+1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
+2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoffanalytics1'](https://github.com/giodeealbayda/tradeoffanalytics1).
+3. For the repository by clicking the `Fork` button.
+4. Verify that you have successfully forked the repository by checking its name:
+
+	**Name of Repository:**
+	
 	```text
-	> javac -d build/classes/main src/main/java/net/tutorial/*.java
+	<username/tradeoffanalytics1
 	```
 	
-	> Make sure that you are in the `junit-basics` directory before issuing the command above.
+	The repository contains the following.
 	
-	>It is worth noting that the subdirectory `build/classes/main` already exists prior to compilation.  This is essential since the `-d build/classes/main` option in the command above means that the subdirectory `build/classes/main` will be used as the base directory of the `.class` files that will be created during compilation.  If the subdirectory does not exist, the command above will produce an error.
+	```text
+	tradeoffanalytics1/
+	|
+	|----build.gradle
+	|
+	|----src/
+	|	|----main/
+	|		 |----java/
+	|		 |	  |----Connector/
+	|		 |	  |		|----Connector.java
+	|		 |	  |
+	|		 |	  |----Servlet/
+	|		 |		      |----TradeOffServlet.java
+	|		 |
+	|		 |----webapp/
+	|			    |----newjsp1.jsp
+	|----build/
+	|	  |----classes/
+	|	  |	      |----main/
+	|	  |		       |----Connector/
+	|	  |		       |----Servlet/
+	|	  |
+	|	  |----libs/
+	|	  |
+	|	  |----tmp/
+	|	  	  |----war/
+	```
+	<br>
+
+####Create a Bluemix DevOps Project based on the Github Repository
+1. Open another web browser tab and login to [Bluemix DevOps](https://hub.jazz.net).
+2. Click `CREATE PROJECT`.
+3. Name your project `tradeoffanalytics-delivery-pipeline`.
+4. Clink `Link to an existing GitHub repository`.
+	>If this is the first time you will link a Bluemix DevOps project to a GitHub repository, you will be asked to authorize your Bluemix DevOps account to access your GitHub account.  Proceed with confirming access.
+
+	<br>
+5. Select the repository `<username>/tradeoffanalytics1`.
+6. Ensure the following options are chosen:
+
+	||||
+	|---|---|---|
+	| **Private Project** | checked |
+	| **Add features for Scrum development** | checked |
+	| **Make this a Bluemix Project** | checked |
+	| **Region** | IBM Bluemix US South |
+	| **Organization** | you may leave the default selection |		
+	| **Space** | dev |
+
+	<br>
+7. Click the `CREATE` button. Wait for your project to be created.
+8. Click the `EDIT CODE` button. You will be redirected to the Bluemix DevOps' editor. In this tutorial, we will refer to this browser tab as `DEVOPS-EDITOR TAB`.
+
+	The editor shows the working directory (and not the GitHub repository you forked earlier).  The working directory is very similar to a local directory in your hard drive.  In fact, when you chose to link the existing `<username>/tradeoffanalytics1` remote repository in an earlier step, you basically instructed Bluemix DevOps to clone the said remote repository to the working directory.  This is very similar to cloning the remote repository to a local repository (i.e., the one in a hard drive).
+
+	However, notice that there are additional files/subdirectories (e.g., `.cfignore` and `launchConfigurations`) that were added in the working directory.  These were added automatically when the Bluemix DevOps project was created.  To sync the working directory with the GitHub repository `<username>/tradeoffanalytics1`, these files/directories need to be pushed to the GitHub remote repository.
+
+	<br>
+9. On the `DEVOPS-EDITOR TAB`: Click (open in another browser tab) the `Git Repository` icon found on the left side of the screen.  We will refer to this browser tab as `DEVOPS-GIT TAB`.
+
+	<br>
+
+10. On the `DEVOPS-GIT TAB`: on the `Working Directory` section (right side of the page) Set the following values:
+
+	||||
+	|---|---|---|
+	| **Select All** | checked |
+	| **Commit message** | files created when Bluemix DevOps project was created |
+
+	<br>
+
+11. On the `DEVOPS-GIT TAB`: Click the `Commit` button.
+12.  On the `DEVOPS-GIT TAB`: Click the `Push` button.
+
+	Your working directory and GitHub repository are now synced.
 
 	<br>
 	
+13.  On the `GITHUB TAB`: Refresh the page and verify that `.cfignore` and `launchConfigurations` are added.
 
-1. Run the `Calculator` application.
+	You are now ready to create the delivery pipeline (i.e., build stage, test stage, deploy stage).
 
-	```text
-	> java -classpath build/classes/main net/tutorial/Calculator
-	```
+	<br>
+	
+14.  On the `DEVOPS-GIT TAB`: Click (open in another browser tab) the `BUILD & DEPLOY` button.  We will refer to this browser tab as `DEVOPS-DELIVERY-PIPELINE TAB`.
+
+
+	<br>
+
+####Create a Build Stage
+1.  On the `DEVOPS-DELIVERY-PIPELINE TAB`: Click the `ADD STAGE` button.  Change the stage name `MyStage` to `Build Stage`.
+
+2. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `INPUT` tab, set the following values:
+
+	||||
+	|---|---|---|
+	| **Input Type** | SCM Repository |
+	| **Git URL** | https://github.com/<username>/tradeoffanalytics1.git |
+	| **Branch** | master |
+	| **Stage Trigger** | Run jobs whenever a change is pushed to Git |
+
+	<br>
+
+2. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `JOBS` tab, click the `ADD JOB` link and select `Build`.   Change the job name `Build` to `Gradle Assemble`.  Set the following values:
+
+	||||
+	|---|---|---|
+	| **Builder Type** | Gradle |		
+	| **Build Shell Command** | `#!/bin/bash`<br>`gradle assemble`  |	
+	| **Stop running this stage if this job fails** | checked |
+
+	<br>
+
+3. On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click the `SAVE` button.
+
+	<br>
+	
+####Create a Test Stage
+
+1. On the `DEVOPS-DELIVERY-PIPELINE TAB`: Click the `ADD STAGE` button.  Change the stage name `MyStage` to `Test Stage`.
+
+2. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `INPUT` tab, set the following values:
+
+	||||
+	|---|---|---|
+	| **Input Type** | Build Artifacts |
+	| **Stage** | Build Stage |
+	| **Job** | Gradle Assemble |
+	| **Stage Trigger** | Run jobs when the previous stage is completed |
+
+	<br>
+
+3. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `JOBS` tab, click the `ADD JOB` link and select `Test`.   Change the job name `Test` to `JUnit Test through Gradle`.  Set the following values:
+
+	||||
+	|---|---|---|
+	| **Tester Type** | Simple |		
+	| **Test Command** | `#!/bin/bash`<br>`gradle test`  |	
+	| **Stop running this stage if this job fails** | checked |
+
+	<br>
+
+4. On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click the `SAVE` button.
+
+	<br>
+
+####Create a Deploy Stage
+
+1. On the `DEVOPS-DELIVERY-PIPELINE TAB`: Click the `ADD STAGE` button.  Change the stage name `MyStage` to `Dev Deploy Stage`.
+
+	>Unlike the build and test stages which are named `Build Stage` and `Test Stage`, respectively, the name of the deploy stage you are about to create is `Dev Deploy Stage` to denote that that the application will be deployed in the `dev` space of your Bluemix account.  Another deploy stage will be created later.
+
+	<br>
+
+2. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `INPUT` tab, set the following values:
+
+	||||
+	|---|---|---|
+	| **Input Type** | Build Artifacts |
+	| **Stage** | Build Stage |
+	| **Job** | Gradle Assemble |
+	| **Stage Trigger** | Run jobs when the previous stage is completed |
+
+	<br>
+
+3. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `JOBS` tab, click the `ADD JOB` link and select `Deploy`.   Change the job name `Deploy` to `Cloud Foundry Push to Dev Space`.  Set the following values:
+
+	||||
+	|---|---|---|
+	| **Deployer Type** | Cloud Foundry |		
+	| **Target** | IBM Bluemix US South - https://api.ng.bluemix.net |		
+	| **Organization** | you may leave the default selection |		
+	| **Space** | dev |	
+	| **Application Name** | blank |		
+	| **Deploy Script** | `#!/bin/bash`<br>`cf push calculator-<your_name> -m 256M -p build/libs/tradeoffanalytics1.war`  |	
+	| **Stop running this stage if this job fails** | checked |
+
+	>**IMPORTANT:** In the `cf push` command, make sure to change `<your_name>` to your name.
+	
+	<br>
+
+4. On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click the `SAVE` button.
+
+	You have created a delivery pipeline. 
+
+	<br>
+
+#### Deploy the Application through the Delivery Pipeline
+
+1.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Build Stage`.  We will refer to this browser tab as `DEVOPS-BUILD-STAGE-LOGS TAB`.
+
+2.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Test Stage`.  We will refer to this browser tab as `DEVOPS-TEST-STAGE-LOGS TAB`.
+
+3.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Dev Deploy Stage`.  We will refer to this browser tab as `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB`.
+
+	The `DEVOPS-BUILD-STAGE-LOGS TAB`, `DEVOPS-TEST-STAGE-LOGS TAB`, `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB` will allow you to monitor the status of the delivery pipeline in each stage.
+
+	Recall that in the [Creating a Web Application using Gradle Tutorial](/gradle-web-application) the following commands are used:
+
+	Command | Purpose
+	---|---
+	`gradle assemble` | build `calcuapp.war`
+	`gradle test` | run the JUnit test
+	`cf push` | deploy the web application in Bluemix
+
+	These three commands are exactly the same commands that the three stages will do.
+
+	<br>
+	
+4.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click the `Run Stage` icon of the `Build Stage`.
+
+	Notice that the status of the `Build Stage` changes to `STAGE RUNNING`.
+
+	Once the status of `Build Stage` changes to `STAGE PASSED`, the `Test Stage` will automatically start.
+
+	Similarly, when the status of `Test Stage` changes to `STAGE PASSED`, the `Dev Deploy Stage` will automatically start.
+
+	Wait for the status of the `Dev Deploy Stage` to change to `STAGE PASSED`.
+
+	You may view the `DEVOPS-BUILD-STAGE-LOGS TAB`, `DEVOPS-TEST-STAGE-LOGS TAB`, `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB` to see the logs related to the execution of the three stages.
+
+	<br>
+	
+5. Open another web browser tab. We will refer to this browser as the `TRADEOFFANALYTICS-APP TAB`.
+6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoffanalytics-<your_name>.mybluemix.net/newjsp1.jsp`.
 
 	**Output:**
-
-	```text
-	5 + 9 = -4
-	8 - 2 = 6
-	4 x 7 = 28
+	```
+	<INSERT OUTPUT HERE>
 	```
 
-	As expected, the output `5 + 9 = -4` is wrong.  In addition, it took approximately 3 secs. before the line `4 x 7 = 28` appeared.
- 
-	<br>
-	
-####Test the Java class
+#### Automatically start the Delivery Pipeline
+In the previous step, you manually started the delivery pipeline by clicking the 
+####Create Bluemix Devops Services Deliver Pipeline based on the Github Repository
+1. Open another web browser tab and login to <a href="http://hub.jazz.net">`Bluemix Devops`</a>.
+2. Click `CREATE PROJECT`.
+3. Name your project `tradeoff-delivery-pipeline`.
+4. Click `Link to an existing Github repository`.
 
-1. Let's examine the code `MyTest.java` which will serve as the test class to test the methods of `Math.java`.
 
-	**Source code** of	`src/main/test/net/tutorial/MyTest.java`:
-
-	```java
-	package net.tutorial;
-	
-	import static org.junit.Assert.assertEquals;
-	import org.junit.Before;
-	import org.junit.Test;
-	
-	public class MyTest{
-	  private Math m;
-	  
-	  @Before
-	  public void initializeMath(){
-	    m = new Math();
-	  }
-	  
-	  @Test(timeout=1000)
-	  public void addShouldReturnSum() {
-	    assertEquals("3 + 7 should be 10", 10, m.add(3, 7));
-	  }
-	  
-	  @Test(timeout=1000)
-	  public void subShouldReturnDifference() {
-	    assertEquals("5 - 9 should be -4", -4, m.sub(5, 9));
-	  }  
-	  
-	  @Test(timeout=1000)
-	  public void multiplyShouldReturnProduct() {
-	    assertEquals("8 * 4 should be 32", 32, m.multiply(8, 4));
-	  }
-	} 
-	```
-
-	Let's look at some code segments in `MyTest.java` that are not typically found in a Java code.
-
-	First of all `MyTest.java` contains a static import: 
-
-	```java
-	import static org.junit.Assert.assertEquals;
-	```
-
-	Static import allows you to access static items (e.g., static methods) in a class without specifying the name of the class.  As an example, JUnit has a class `Assert` that has a static method `assertEquals`.  If a non-static import (i.e., the typical way of importing a class) is used:
- 
-	```java
-	import org.junit.Assert;
-	```
-
-	you need to specify the `Assert` class when calling the `assertEquals` method:
-
-	```java
-	    Assert.assertEquals("3 + 7 should be 10", 10, m.add(3, 7));
-	```
-
-	Since `MyTest.java` utilizes static import, you may omit the class `Assert`:
-
-	```java
-	    assertEquals("3 + 7 should be 10", 10, m.add(3, 7));
-	```
-
-	This makes the code shorter especially if you plan to use the `assertEquals` method several times.
-
-	Aside from a non-static import, `MyTest.java` utilizes several JUnit annotations : 
-
-	```java
-	  @Test(timeout=1000)
-	   
-	  @Before
-	```
-
-	Before we discuss `@Test(timeout=1000)` let's discuss `@Test` first.  Placing the annotation `@Test` before a method specifies that a method is used as a test method.  Therefore, `MyTest.java` has three test methods: `addShouldReturnSum`, `subShouldReturnDifference`, and `multiplyShouldReturnProduct`.
-
-	`@Test(timeout=1000)` has the same effect as `@Test` but performs an additional test by monitoring the execution time of a test method.  If a test method executes beyond a specified timeout then it will produce an error.  The timeout is in msec.  This means `@Test(timeout=1000)` will wait for 1000 msecs. or 1 sec. for a test method to complete.  If after 1 sec. a test method has not finished executing,  a timeout error is reported.  
-
-	In `MyTest.java`, the three methods of`Math.java` (i.e., `add`, `sub`, and `multiply`) are tested with a timeout of 1 sec.  Recall that we intentionally placed a 3 secs. delay in the `multiply` method.  We expect a timeout error reported when you run the test later.
-
-	`@Before` indicates that a method needs to be executed before each test method is executed.  In `MyTest.java` we use `@Before` in the following:
-
-	```java
-	  @Before
-	  public void initializeMath(){
-	    m = new Math();
-	  }
-	```
-
-	 Given this, the `initializeMath` method gets executed before each of the three test methods get executed.  In `MyTest.java`, you may opt to omit the `@Before` annotation as well as the `initializeMath` method.  However, you need to insert the instantiation of `m` in each test method.  An example is shown below:
-
-	```java
-	    @Test(timeout=1000)
-	    public void addShouldReturnSum() {
-	      m = new Math();
-	      assertEquals("3 + 7 should be 10", 10, m.add(3, 7));
-	    }
-	    
-	    @Test(timeout=1000)
-	    public void subShouldReturnDifference() {
-	      m = new Math();      
-	      assertEquals("5 - 9 should be -4", -4, m.sub(5, 9));
-	    }  
-	    
-	    @Test(timeout=1000)
-	    public void multiplyShouldReturnProduct() {
-	      m = new Math();      
-	      assertEquals("8 * 4 should be 32", 32, m.multiply(8, 4));
-	    }
-	  } 
-	```
-
-	There are other JUnit annotations aside from `@Test`, `@Test(timeout=1000)`, and `@Before`.  You may check the webpage [Unit Testing with JUnit - Tutorial](http://www.vogella.com/tutorials/JUnit/article.html) for a discussion of other JUnit annotations.
-
-	It can be observed that the names of the test methods in `MyTest.java` (i.e., `addShouldReturnSum`, `subShouldReturnDifference`, and `multiplyShouldReturnProduct`) are relatively long.  This is essential to make the report generated by JUnit more intuitive.  When a test method encounters an error, the name of the test method is included in the report.  Having very descriptive method names allows developers to debug the codes faster.
-
-	The last thing that is worth examining in `MyTest.java` is the `assertEquals` method.  The `assertEquals` method accepts the following parameters: `message`, `expected`, and `actual`.
-
-	If `expected` is not equal to `actual`, the `assertEquals` method throws an `AssertException` that contains a message that is based on the `message` parameter.
-
-	Aside from `assertEquals`, there are other methods that can be used for testing.  You may check the webpage [Unit Testing with JUnit - Tutorial](http://www.vogella.com/tutorials/JUnit/article.html) for additional methods that can be used for testing.
-
-	<br>
- 
-1. Let's now see how the test class `MyTest.java` is executed.   `TestRunner.java` is an application that runs the test methods found in `MyTest.java`.
-
-	**Source code** of	`src/test/java/net/tutorial/TestRunner.java`:
- 
-	```java
-	package net.tutorial;
-	
-	import org.junit.runner.JUnitCore;
-	import org.junit.runner.Result;
-	import org.junit.runner.notification.Failure;
-	
-	public class TestRunner{
-	  public static void main(String args[]){
-	    Result result = JUnitCore.runClasses(MyTest.class);
-		int errorCtr = 0;
-	    for (Failure failure : result.getFailures()) {
-		  errorCtr++;
-		  System.out.println("Error #:"+ errorCtr);
-	      System.out.println(failure.toString());
-		  System.out.println();
-	    }
-		
-		if (errorCtr == 0)
-		  System.out.println("Congratulations!  There are no errors.");
-	  }
-	}
-	```
-
-	Notice that `TestRunner.java` never explicitly called the test methods `addShouldReturnSum`, `subShouldReturnDifference`, and `multiplyShouldReturnProduct` found in `MyTest.java`.
-
-	Instead, it simply calls the `runClasses` method in `JUnitCore`:
- 
-	```java
-	      Result result = JUnitCore.runClasses(MyTest.class); 
-	``` 
-
-	The `runClasses` method has a parameter `MyTest.class`.  It is able to identify the test methods to execute in `MyTest.java` because of the `@Test` annotations.  The result of all test methods (i.e., succeeded or failed) are saved in `result` which is an instance of `Result`.
-
-	`Result` has a `getFailures` method which returns a `List` of `Failure`.
-
-	<br>
-
-1. Compile `MyTest.java` and `TestRunner.java`.
-
-	> Make sure that you are in the `junit-basics` directory before issuing the command below.
-   
-	```text
-	> javac -classpath build/libs/*;build/classes/main -d build/classes/test src/test/java/net/tutorial/*.java
-	```
-
-	Notice that the classpath includes `build/libs/*`.  Recall that you downloaded and saved the two JUnit `jar` files in this directory.
- 
-	 <br>
-	 
-1. Run the `TestRunner` application.
-
-	```text
-	> java -classpath build/libs/*;build/classes/main;build/classes/test net/tutorial/TestRunner
-	```
-	
-	**Output:**
-
-	```text  
-	Error #:1
-	multiplyShouldReturnProduct(net.tutorial.MyTest): test timed out after 1000 milliseconds
-	    
-	Error #:2
-	addShouldReturnSum(net.tutorial.MyTest): 3 + 7 should be 10 expected:<10> but was:<-4>
-	```
- 
-	As expected, the `multiplyShouldReturnProduct` test method resulted to an error since the `multiply` method of `Math.java` has a call to the `delay` method which produces a 3 sec. delay.  This is way longer than the 1 sec. timeout that is indicated in the annotation in the test method (i.e., `@Test(timeout=1000)`).
-
-	In addition, the `addShouldReturnSum` test method also failed since we intentionally made the `sum` method of `Math.java` incorrect.  Recall that we used `return a-b;` instead of `return a+b;` in the `sum` method of `Math.java`.
- 
-	<br>
+####Delete the Sample Application and the Tradeoff Analytics Service
+1. Go back to the browser tab containing your Bluemix account. In the menu, click `DASHBOARD`.
+2. Click the `gear` icon in the widget of the sample application.
+3. Click the `Delete App` entry. In the `Services` tab, make sure that the `Tradeoff Analytics` service is selected. In the `Routes` tab, make sure that the route (i.e., URL) is selected.
+4. Click the `DELETE` button.
 	
 ####End of Tutorial
 
 Go back to the [List of Tutorials](/tutorial-list).
-
-####What's Next?
-
-[Gradle Basics Tutorial](/gradle-basics)
