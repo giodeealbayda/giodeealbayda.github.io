@@ -5,7 +5,7 @@ permalink: /junit-basics/
 ---
 
 
-[JUnit](http://junit.org/) is a simple framework to write repeatable tests.
+##Tradeoff Analytics Tutorial
 
 In this tutorial you will learn how to create a simple test class that is used to test the methods of a Java class.
 
