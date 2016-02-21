@@ -72,16 +72,6 @@ permalink: /junit-basics/
 	`build/libs` is used to store the `.war` file which will be created after compiling the web application.
 
 	<br>
-	
-####Download the JUnit libraries
-
-1. Go to [https://github.com/junit-team/junit/wiki/Download-and-Install](https://github.com/junit-team/junit/wiki/Download-and-Install).
- 
-	>Just in case the URL is broken, you may go to [http://junit.org/](http://junit.org/) and find the download link.
- 
-2. Download the latest version of `junit.jar` and `hamcrest-core.jar` and save them in the subdirectory `build/libs`.
-
-	<br>
 
 ####Examine the Java class to be tested
 
