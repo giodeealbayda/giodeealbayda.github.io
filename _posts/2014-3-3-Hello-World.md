@@ -14,14 +14,14 @@ In this tutorial we will learn how to create a simple web application that will 
 
 
 ####Copy Sample Codes from Git repository
-1. Open a terminal window and create the directory `junittemp` in the root directory.  Go to the created directory.
+1. Open a terminal window and create the directory `tradeoffanalytics` in the root directory.  Go to the created directory.
 
- ```bash
+ ```
     >mkdir junittemp
     >cd junittemp
  ```
 
-1. Clone the git repository `https://hub.jazz.net/git/pantolav/junit-basics` and go to the created `junit-basics` directory.
+1. Clone the git repository `https://github.com/giodeealbayda/tradeoffanalytics1.git` and go to the `tradeoffanalytics1` directory.
 
  ```bash
     >git clone https://hub.jazz.net/git/pantolav/junit-basics
