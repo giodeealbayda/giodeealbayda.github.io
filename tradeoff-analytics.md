@@ -7,75 +7,69 @@ permalink: /junit-basics/
 
 ##Tradeoff Analytics Tutorial
 
-In this tutorial you will learn how to create a simple test class that is used to test the methods of a Java class.
-
->**Prerequisite:**
-
->Having a good understanding of Java programming is required to do this tutorial.
-
->You are not required (but **recommended**) to do  the [Git Basics Tutorial](/git-basics).
-
->- **However**, ensure that you have Git client installed in your machine.
-
+> In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
 
 <br>
+> Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
 
 ####Copy Sample Codes from Git repository
 
-1. Open a terminal window and create the directory `junittemp` in the root directory.  Go to the created directory.
+1. Open a terminal window and create the directory `tradeoff-analytics` in the root directory.  Go to the created directory.
 
-	```text		
-	> mkdir junittemp
-	> cd junittemp
+	```	
+	> mkdir tradeoffanalytics
+	> cd tradeoffanalytics
 	```
 
 	<br>
 	
-1. Clone the git repository `https://github.com/pong-pantola/junit-basics.git` and go to the created `junit-basics` directory.
+1. Clone the git repository `https://github.com/giodeealbayda/tradeoffanalytics1.git` and go to the created `tradeoffanalytics1` directory.
 
-	```text
-	> git clone https://github.com/pong-pantola/junit-basics.git
-	> cd junit-basics
+	```
+	> git clone https://github.com/giodeealbayda/tradeoffanalytics1.git
+	> cd tradeoffanalytics1
 	```
  
-	The `junit-basics` directory has two subdirectories: `src` and `build`.
+	The `tradeoffanalytics1` directory has two subdirectories: `src` and `build`.
 
 	```text
 	junit-basics/
 	|
 	|----src/
 	|    |
-	|    |----main/java/net/tutorial/
-	|    |                  |
-	|    |                  |----Math.java
-	|    |                  |----Calculator.java
+	|    |----main/Connector/
+	|    |           	|----Connector.java
+	|    |                  
+	|    |----main/Servlet/
+	|    |		      |----TradeOffServlet.java
 	|    |
-	|    |----test/java/net/tutorial
-	|                       |
-	|                       |----MyTest.java
-	|                       |----TestRunner.java
+	|    |----webapp/
+	|    |		|----newjsp1.jsp
+	|                       
+	|                       
 	|
 	|----build/
 	     |
 	     |----classes/
 	     |    |
 	     |    |----main/
-	     |    |----test/
-	     |    
+	     |    |	   |----Connector/
+	     |    |	   |----Servlet/
+	     |    |
 	     |----libs/
 	``` 
  
-	`src` has two subdirectories: `main` and `test`. 
+	`src` has two subdirectories: `main` and `webapp`. 
 
-	`src/main` contains the Java class `src/main/java/net/tutorial/Math.java` which you will test later using JUnit.  In addition, it contains the `src/main/java/net/tutorial/Calculator.java` which is a sample Java application that uses `Math.java`. 
+	`src/main` contains the Java class `src/main/Connector/Connector.java` which connects the application to the Tradeoff Analytics service. In addition, it contains the `src/main/Servlet/TradeOffServlet.java` which processes the data from the web application. 
 
-	`src/test` contains the Java class `src/test/java/net/tutorial/MyTest.java` which is the test class that will be used to test `Math.java`.  In addition, it contains the `src/test/java/net/tutorial/TestRunner.java` which is a Java application that will run the test. 
+	`src/webapp` contains the JSP page `src/webapp/newjsp1.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
  
 	`build` has two subdirectories: `classes` and `libs`. 
 
-	`build/classes` is used to hold the the `.class` files that will be created later when you compile your `.java` files.
+	`build/classes` is used to hold the the `.class` files that will be created later when you compile the web application.
 
-	`build/libs` is used for the JUnit libraries (i.e, `.jar` files) that you will download later.
+	`build/libs` is used to store the `.war` file which will be created after compiling the web application.
 
 	<br>
 	
