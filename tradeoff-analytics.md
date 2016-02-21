@@ -23,17 +23,16 @@ permalink: /junit-basics/
 
 	<br>
 	
-1. Clone the git repository `https://github.com/giodeealbayda/tradeoffanalytics1.git` and go to the created `tradeoffanalytics1` directory.
+2. Download the <a href="https://github.com/giodeealbayda/tradeoffanalytics1/blob/master/tradeoffanalytics1.war?raw=true">`tradeoffanalytics1.war`</a> file and place it inside the `tradeoffanalytics1` directory.
 
 	```
-	> git clone https://github.com/giodeealbayda/tradeoffanalytics1.git
 	> cd tradeoffanalytics1
 	```
  
 	The `tradeoffanalytics1` directory has two subdirectories: `src` and `build`.
 
-	```text
-	junit-basics/
+	```
+	tradeoffanalytics1/
 	|
 	|----src/
 	|    |
