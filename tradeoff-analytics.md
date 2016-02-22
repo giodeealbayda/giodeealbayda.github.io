@@ -9,8 +9,7 @@ permalink: /junit-basics/
 
 > In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
 
-<br>
-Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
+>Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
 
 ####Copy the Github Repository
 1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
