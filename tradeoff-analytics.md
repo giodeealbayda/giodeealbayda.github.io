@@ -14,7 +14,7 @@ Access Git Repository [here](https://github.com/giodeealbayda/tradeoff-analytics
 You will download a copy of sample application that you will deploy in your Bluemix Account.
 
 1. Create the directory `tradeoff-analytics` in your root directory.
-2. Download **tradeoff-analytics.war** and save it in the `tradeoff-analytics` directory.
+2. Download [tradeoff-analytics.war](https://github.com/giodeealbayda/giodeealbayda.github.io/blob/master/tradeoff-analytics.war?raw=true) and save it in the `tradeoff-analytics` directory.
 
 ####Deploy Sample Application in Bluemix using the cf tool
 1. Open a terminal window and go to the `tradeoff-analytics` directory.
