@@ -263,11 +263,21 @@ permalink: /tradeoff-analytics/
 6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoffanalytics-<your_name>.mybluemix.net/newjsp1.jsp`.
 
 	**Output:**
-	```
-	<INSERT OUTPUT HERE>
-	```
-####Analyze the Results
+	||||
+	|Choices:|Price|RAM|Screen|
+	| **Input Type** | Build Artifacts |
+	| **Stage** | Build Stage |
+	| **Job** | Gradle Assemble |
+	| **Stage Trigger** | Run jobs when the previous stage is completed |
+	
+####Analyze how the Tradeoff Analytics Service Works
+
+This tutorial only covers the basic functions of the Tradeoff Analytics Service. All of the functions needed by the service to work is found in the `TradeOffServlet.java`. The servlet is found in the `src/main/java/Servlet` directory.
+
+####Examine the `TradeOffServlet.java`
 1. 
+
+####Run the Sample Application
 ####Delete the Bluemix Applications
 
 1. Delete the application in your Bluemix account.
@@ -280,7 +290,7 @@ permalink: /tradeoff-analytics/
 
 	<br>
 
-1. You may close all the browser tabs you have opened.
+3. You may close all the browser tabs you have opened.
 	
 	<br>
 	
