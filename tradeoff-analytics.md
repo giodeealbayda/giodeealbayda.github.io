@@ -54,53 +54,9 @@ permalink: /junit-basics/
 	     |----libs/
 	``` 
  
-	`src` has two subdirectories: `main` and `webapp`. 
-
-	`src/main` contains the Java class `src/main/Connector/Connector.java` which connects the application to the Tradeoff Analytics service. In addition, it contains the `src/main/Servlet/TradeOffServlet.java` which processes the data from the web application. 
-
-	`src/webapp` contains the JSP page `src/webapp/newjsp1.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
- 
-	`build` has two subdirectories: `classes` and `libs`. 
-
-	`build/classes` is used to hold the the `.class` files that will be created later when you compile the web application.
-
-	`build/libs` is used to store the `.war` file which will be created after compiling the web application.
-
-	<br>
-
-####Deploy Sample Application in Bluemix using the `cf` tool.
 
 
-1. Open a terminal window and go to the `tradeoffanalytics` directory.
-2. Login to your Bluemix account using the `cf` tool.
-	```
-	> cf login -a https://api.ng.bluemix.net -s dev
-	```
-3. Upload the sample application to your Bluemix account.
-	```
-	> cf push tradeoffanalytics-< your_name > -m 256M -p tradeoffanalytics1.war
-	```
-	**Example:**
-	```
-	> cf push tradeoffanalytics-giodee -m 256M -p tradeoffanalytics1.war
-	```
-4. Go back to the browser tab containing your Bluemix account. In the menu, click `DASHBOARD`.
-   The `Applications` section of your dashboard shows a widget representing the application `tradeoffanalytics-<your_name>` you deployed earlier.
-5. Click the widget of your application to see its overview.
-
-####Add a Tradeoff Analytics Service and Bind it to the Sample Application
-1. On the left pane, click the `Overview` link.
-2. Click the `ADD A SERVICE OR API` link. You will be redirected to the `Catalog` page.
-3. Look for the `Tradeoff Analytics` service and click it.
-4. Click the `CREATE` button.
-5. When asked to restage your application, click the `RESTAGE` button. Wait for your application to restage.
-6. Open another broswer tab (do not close the browser tabl containing your Bluemix account). Go to `tradeoffanalytics-<your_name>.mybluemix.net/newjsp1.jsp` to test if the sample application can already connect to the created Tradeoff Analytics Service.
-
-####Analyze How the Sample Application and Tradeoff Analytics Service Works
-1. In order for the functions of the Tradeoff Analytics service to work, `Gradle` is required to download the libraries needed to solve the dependency
-2. 
-
-####Copy a Github Repository
+####Copy the Github Repository
 1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
 2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoffanalytics1'](https://github.com/giodeealbayda/tradeoffanalytics1).
 3. For the repository by clicking the `Fork` button.
@@ -109,7 +65,7 @@ permalink: /junit-basics/
 	**Name of Repository:**
 	
 	```text
-	<username/tradeoffanalytics1
+	<username>/tradeoffanalytics1
 	```
 	
 	The repository contains the following.
@@ -142,7 +98,21 @@ permalink: /junit-basics/
 	|	  	  |----war/
 	```
 	<br>
+	
+	`src` has two subdirectories: `main/java` and `main/webapp`. 
 
+	`src/main/java` contains the Java class `src/main/Connector/Connector.java` which connects the application to the Tradeoff Analytics service. In addition, it contains the `src/main/Servlet/TradeOffServlet.java` which processes the data from the web application. 
+
+	`src/main/webapp` contains the JSP page `src/webapp/newjsp1.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
+ 
+	`build` has two subdirectories: `classes` and `libs`. 
+
+	`build/classes` is used to hold the the `.class` files that will be created later when you compile the web application.
+
+	`build/libs` is used to store the `.war` file which will be created after compiling the web application.
+
+	<br>
+	
 ####Create a Bluemix DevOps Project based on the Github Repository
 1. Open another web browser tab and login to [Bluemix DevOps](https://hub.jazz.net).
 2. Click `CREATE PROJECT`.
@@ -304,18 +274,15 @@ permalink: /junit-basics/
 #### Deploy the Application through the Delivery Pipeline
 
 1.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Build Stage`.  We will refer to this browser tab as `DEVOPS-BUILD-STAGE-LOGS TAB`.
-
 2.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Test Stage`.  We will refer to this browser tab as `DEVOPS-TEST-STAGE-LOGS TAB`.
-
 3.  On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click (open in another browser tab) the `View logs and history ` link of the `Dev Deploy Stage`.  We will refer to this browser tab as `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB`.
-
 	The `DEVOPS-BUILD-STAGE-LOGS TAB`, `DEVOPS-TEST-STAGE-LOGS TAB`, `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB` will allow you to monitor the status of the delivery pipeline in each stage.
 
-	Recall that in the [Creating a Web Application using Gradle Tutorial](/gradle-web-application) the following commands are used:
+	Recall that in the creating a Web Application using Gradle, the following commands are used:
 
 	Command | Purpose
 	---|---
-	`gradle assemble` | build `calcuapp.war`
+	`gradle assemble` | build `tradeoffanalytics1.war`
 	`gradle test` | run the JUnit test
 	`cf push` | deploy the web application in Bluemix
 
@@ -345,20 +312,28 @@ permalink: /junit-basics/
 	<INSERT OUTPUT HERE>
 	```
 
-#### Automatically start the Delivery Pipeline
-In the previous step, you manually started the delivery pipeline by clicking the 
+
 ####Create Bluemix Devops Services Deliver Pipeline based on the Github Repository
 1. Open another web browser tab and login to <a href="http://hub.jazz.net">`Bluemix Devops`</a>.
 2. Click `CREATE PROJECT`.
 3. Name your project `tradeoff-delivery-pipeline`.
 4. Click `Link to an existing Github repository`.
 
+####Delete the Bluemix Applications
 
-####Delete the Sample Application and the Tradeoff Analytics Service
-1. Go back to the browser tab containing your Bluemix account. In the menu, click `DASHBOARD`.
-2. Click the `gear` icon in the widget of the sample application.
-3. Click the `Delete App` entry. In the `Services` tab, make sure that the `Tradeoff Analytics` service is selected. In the `Routes` tab, make sure that the route (i.e., URL) is selected.
-4. Click the `DELETE` button.
+1. Delete the application in your Bluemix account.
+
+	This will free up some resources which is essential to accommodate new applications and services you want to deploy in the future.
+
+2. You may retain the Bluemix DevOps project `devops-delivery-pipeline` and your <username>/tradeoffanalytics1 GitHub repository.
+
+	The DevOps project and the GitHub repository are needed in the Bluemix DevOps Services Track and Plan Tutorial
+
+	<br>
+
+1. You may close all the browser tabs you have opened.
+	
+	<br>
 	
 ####End of Tutorial
 
