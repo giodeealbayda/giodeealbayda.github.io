@@ -366,3 +366,37 @@ Dilemma dilemma = service.dilemmas(problem);
 ####End of Tutorial
 
 Go back to the [List of Tutorials](/tutorial-list).
+
+
+#### BACKUP
+####Copy Sample Application
+You will download a copy of sample application that you will deploy in your Bluemix Account.
+
+1. Create the directory `tradeoff-analytics` in your root directory.
+2. Download **tradeoff-analytics.war** and save it in the `tradeoff-analytics` direcotry.
+
+####Deploy Sample Application in Bluemix using the cf tool
+1. Open a terminal window and go to the `tradeoff-analytics` directory.
+
+2. Login to your Bluemix account using the cf tool.
+``` text
+cf login -a https://api.ng.bluemix.net -s dev
+```
+<br>
+3. Upload the sample application to your Bluemix account.
+``` text
+cf push tradeoff-analytics-< your_name > -m 256M -p tradeoff-analytics.war
+```
+<br>
+4. Go back to the browser tab containing your Bluemix account. In the menu, click `DASHBOARD`.
+<br>5. Click the widget of your application to see its overview.
+
+####Add tradeoff
+
+##analyze
+
+##examine
+
+##run
+
+##delete
