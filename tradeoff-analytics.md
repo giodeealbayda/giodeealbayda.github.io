@@ -9,24 +9,24 @@ permalink: /tradeoff-analytics/
 
 > In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
 <br>
->Access Git Repository [here](https://github.com/giodeealbayda/tradeoffanalytics.git).
+>Access Git Repository [here](https://github.com/giodeealbayda/tradeoff-analytics.git).
 
 ####Copy the Github Repository
 1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
-2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoffanalytics'](https://github.com/giodeealbayda/tradeoffanalytics).
+2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoff-analytics'](https://github.com/giodeealbayda/tradeoff-analytics).
 3. For the repository by clicking the `Fork` button.
 4. Verify that you have successfully forked the repository by checking its name:
 
 	**Name of Repository:**
 	
 	```text
-	<username>/tradeoffanalytics
+	<username>/tradeoff-analytics
 	```
 	
 	The repository contains the following.
 	
 	```text
-	tradeoffanalytics/
+	tradeoff-analytics/
 	|
 	|----build.gradle
 	|
@@ -71,12 +71,12 @@ permalink: /tradeoff-analytics/
 ####Create a Bluemix DevOps Project based on the Github Repository
 1. Open another web browser tab and login to [Bluemix DevOps](https://hub.jazz.net).
 2. Click `CREATE PROJECT`.
-3. Name your project `tradeoffanalytics-delivery-pipeline`.
+3. Name your project `tradeoff-analytics-giodee`.
 4. Clink `Link to an existing GitHub repository`.
 	>If this is the first time you will link a Bluemix DevOps project to a GitHub repository, you will be asked to authorize your Bluemix DevOps account to access your GitHub account.  Proceed with confirming access.
 
 	<br>
-5. Select the repository `<username>/tradeoffanalytics`.
+5. Select the repository `<username>/tradeoff-analytics`.
 6. Ensure the following options are chosen:
 
 	||||
@@ -92,39 +92,31 @@ permalink: /tradeoff-analytics/
 7. Click the `CREATE` button. Wait for your project to be created.
 8. Click the `EDIT CODE` button. You will be redirected to the Bluemix DevOps' editor. In this tutorial, we will refer to this browser tab as `DEVOPS-EDITOR TAB`.
 
-	The editor shows the working directory (and not the GitHub repository you forked earlier).  The working directory is very similar to a local directory in your hard drive.  In fact, when you chose to link the existing `<username>/tradeoffanalytics` remote repository in an earlier step, you basically instructed Bluemix DevOps to clone the said remote repository to the working directory.  This is very similar to cloning the remote repository to a local repository (i.e., the one in a hard drive).
+	The editor shows the working directory (and not the GitHub repository you forked earlier).  The working directory is very similar to a local directory in your hard drive.  In fact, when you chose to link the existing `<username>/tradeoff-analytics` remote repository in an earlier step, you basically instructed Bluemix DevOps to clone the said remote repository to the working directory.  This is very similar to cloning the remote repository to a local repository (i.e., the one in a hard drive).
 
-	However, notice that there are additional files/subdirectories (e.g., `.cfignore` and `launchConfigurations`) that were added in the working directory.  These were added automatically when the Bluemix DevOps project was created.  To sync the working directory with the GitHub repository `<username>/tradeoffanalytics`, these files/directories need to be pushed to the GitHub remote repository.
-
+	However, notice that there are additional files/subdirectories (e.g., `.cfignore` and `launchConfigurations`) that were added in the working directory.  These were added automatically when the Bluemix DevOps project was created.  To sync the working directory with the GitHub repository `<username>/tradeoff-analytics`, these files/directories need to be pushed to the GitHub remote repository.
 	<br>
 9. On the `DEVOPS-EDITOR TAB`: Click (open in another browser tab) the `Git Repository` icon found on the left side of the screen.  We will refer to this browser tab as `DEVOPS-GIT TAB`.
-
 	<br>
-
 10. On the `DEVOPS-GIT TAB`: on the `Working Directory` section (right side of the page) Set the following values:
 
 	||||
 	|---|---|---|
 	| **Select All** | checked |
 	| **Commit message** | files created when Bluemix DevOps project was created |
-
 	<br>
 
 11. On the `DEVOPS-GIT TAB`: Click the `Commit` button.
 12.  On the `DEVOPS-GIT TAB`: Click the `Push` button.
 
 	Your working directory and GitHub repository are now synced.
-
-	<br>
-	
+	<br>	
 13.  On the `GITHUB TAB`: Refresh the page and verify that `.cfignore` and `launchConfigurations` are added.
 
 	You are now ready to create the delivery pipeline (i.e., build stage, test stage, deploy stage).
 
 	<br>
-	
 14.  On the `DEVOPS-GIT TAB`: Click (open in another browser tab) the `BUILD & DEPLOY` button.  We will refer to this browser tab as `DEVOPS-DELIVERY-PIPELINE TAB`.
-
 
 	<br>
 
@@ -136,10 +128,9 @@ permalink: /tradeoff-analytics/
 	||||
 	|---|---|---|
 	| **Input Type** | SCM Repository |
-	| **Git URL** | https://github.com/<username>/tradeoffanalytics.git |
+	| **Git URL** | https://github.com/your_username/tradeoff-analytics.git |
 	| **Branch** | master |
 	| **Stage Trigger** | Run jobs whenever a change is pushed to Git |
-
 	<br>
 
 2. On the `DEVOPS-DELIVERY-PIPELINE TAB`: On the `JOBS` tab, click the `ADD JOB` link and select `Build`.   Change the job name `Build` to `Gradle Assemble`.  Set the following values:
@@ -178,11 +169,8 @@ permalink: /tradeoff-analytics/
 	| **Tester Type** | Simple |		
 	| **Test Command** | `#!/bin/bash`<br>`gradle test`  |	
 	| **Stop running this stage if this job fails** | checked |
-
 	<br>
-
 4. On the `DEVOPS-DELIVERY-PIPELINE TAB`:  Click the `SAVE` button.
-
 	<br>
 
 ####Create a Deploy Stage
@@ -212,8 +200,8 @@ permalink: /tradeoff-analytics/
 	| **Target** | IBM Bluemix US South - https://api.ng.bluemix.net |		
 	| **Organization** | you may leave the default selection |		
 	| **Space** | dev |	
-	| **Application Name** | blank |		
-	| **Deploy Script** | `#!/bin/bash`<br>`cf push tradeoffanalytics-<your_name> -m 256M -p build/libs/tradeoffanalytics.war`  |	
+	| **Application Name** | tradeoff-analytics-giodee |		
+	| **Deploy Script** | `#!/bin/bash`<br>`cf push tradeoff-analytics-<your_name> -m 256M -p build/libs/tradeoff-analytics.war`  |	
 	| **Stop running this stage if this job fails** | checked |
 
 	>**IMPORTANT:** In the `cf push` command, make sure to change `<your_name>` to your name.
@@ -237,7 +225,7 @@ permalink: /tradeoff-analytics/
 
 	Command | Purpose
 	---|---
-	`gradle assemble` | build `tradeoffanalytics.war`
+	`gradle assemble` | build `tradeoff-analytics.war`
 	`gradle test` | run the JUnit test
 	`cf push` | deploy the web application in Bluemix
 
@@ -256,11 +244,10 @@ permalink: /tradeoff-analytics/
 	Wait for the status of the `Dev Deploy Stage` to change to `STAGE PASSED`.
 
 	You may view the `DEVOPS-BUILD-STAGE-LOGS TAB`, `DEVOPS-TEST-STAGE-LOGS TAB`, `DEVOPS-DEV-DEPLOY-STAGE-LOGS TAB` to see the logs related to the execution of the three stages.
-
 	<br>
 	
 5. Open another web browser tab. We will refer to this browser as the `TRADEOFFANALYTICS-APP TAB`.
-6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoffanalytics-<your_name>.mybluemix.net/home.jsp`.
+6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoff-analytics-<your_name>.mybluemix.net/home.jsp`.
 
 	**Output:**
 	||||||||
@@ -271,7 +258,20 @@ permalink: /tradeoff-analytics/
 	| MyPhone | 5 | 30000 | 5000 |
 	| LG Optimus G | 10 | 300 | 5 |
 	| | | | **Analyze** |
-	
+
+>**Important:**
+>Notice that when you click the `Analyze` button, you will not see the result. This is because the Tradeoff Analytics Service is not yet bound to the web application.
+<br>
+####Add Tradeoff Analytics Service and Bind it to the Sample Application
+1. Login to your [Bluemix Account](http://www.ibm.biz/bluemixph).
+2. Go to your `DASHBOARD`.
+3. Click the `ADD A SERVICE OR API` link. You will be redirected to the Catalog page.
+4. Look for `Tradeoff Analytics` service and click it.
+5. In the `Service name` text box, type `tradeoff-analytics-service` or any name that you want for the service.
+6. Click the `CREATE` button.
+7. When asked to restage your application, click the `RESTAGE` button. Wait for your application to restage.
+8. Open another browser tab, and type in the url `tradeoff-analytics-< your_name >.mybluemix.net` to see if your application works.
+
 ####Analyze how the Tradeoff Analytics Service Works
 
 This tutorial only covers the basic functions of the Tradeoff Analytics Service. All of the functions needed by the service to work is found in the `TradeOffServlet.java`. The servlet is found in the `src/main/java/Servlet` directory.
