@@ -149,13 +149,13 @@ It can be seen that the objects are passed together with their corresponding val
 
 **< your_name >/tradeoff-analytics repository:**
 	
-	```text
-	<username>/tradeoff-analytics
 	```
+	<username>/tradeoff-analytics
+	
 	
 	The repository contains the following.
 	
-	```text
+	
 	tradeoff-analytics/
 	|
 	|----build.gradle
