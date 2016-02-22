@@ -170,22 +170,13 @@ Dilemma dilemma = service.dilemmas(problem);
 
 >**Important:**
 >If there is a tie among the options, they will all have `FRONT` as their status.<br>
-###Delete the Bluemix Applications
+###Delete the sample application for housekeeping
 
-1. Delete the application in your Bluemix account.
+1. Go to Bluemix.
+2. Click `DASHBOARD`.
+3. From the Applications List, click the `GEAR ICON` of the `tradeoff-analytics-< your_name >` application. In the `SERVICES` tab, make sure that Tradeoff Analytics service is selected. In the `ROUTES` tab, make sure that the route (i.e., URL) is selected.
+4. Choose `DELETE APP`.
 
-	This will free up some resources which is essential to accommodate new applications and services you want to deploy in the future.
-2. You may retain the Bluemix DevOps project `DEVOPS-DELIVERY-PIPELINE` and your <username>/tradeoffanalytics GitHub repository.
-
-	The DevOps project and the GitHub repository are needed in the Bluemix DevOps Services Track and Plan Tutorial.
-
-3. You may close all the browser tabs you have opened.
-	
-	<br>
-	
 ####End of Tutorial
 
 Go back to the [List of Tutorials](/tutorial-list).
-
-
-#### BACKUP
