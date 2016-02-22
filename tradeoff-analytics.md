@@ -9,24 +9,24 @@ permalink: /tradeoff-analytics/
 
 > In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
 <br>
->Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
+>Access Git Repository [here](https://github.com/giodeealbayda/tradeoffanalytics.git).
 
 ####Copy the Github Repository
 1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
-2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoffanalytics1'](https://github.com/giodeealbayda/tradeoffanalytics1).
+2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[`https://github.com/giodeealbayda/tradeoffanalytics'](https://github.com/giodeealbayda/tradeoffanalytics).
 3. For the repository by clicking the `Fork` button.
 4. Verify that you have successfully forked the repository by checking its name:
 
 	**Name of Repository:**
 	
 	```text
-	<username>/tradeoffanalytics1
+	<username>/tradeoffanalytics
 	```
 	
 	The repository contains the following.
 	
 	```text
-	tradeoffanalytics1/
+	tradeoffanalytics/
 	|
 	|----build.gradle
 	|
@@ -40,7 +40,7 @@ permalink: /tradeoff-analytics/
 	|		 |		      |----TradeOffServlet.java
 	|		 |
 	|		 |----webapp/
-	|			    |----newjsp1.jsp
+	|			    |----home.jsp
 	|----build/
 	|	  |----classes/
 	|	  |	      |----main/
@@ -58,7 +58,7 @@ permalink: /tradeoff-analytics/
 
 	`src/main/java` contains the Java class `src/main/Connector/Connector.java` which connects the application to the Tradeoff Analytics service. In addition, it contains the `src/main/Servlet/TradeOffServlet.java` which processes the data from the web application. 
 
-	`src/main/webapp` contains the JSP page `src/webapp/newjsp1.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
+	`src/main/webapp` contains the JSP page `src/webapp/home.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
  
 	`build` has two subdirectories: `classes` and `libs`. 
 
@@ -76,7 +76,7 @@ permalink: /tradeoff-analytics/
 	>If this is the first time you will link a Bluemix DevOps project to a GitHub repository, you will be asked to authorize your Bluemix DevOps account to access your GitHub account.  Proceed with confirming access.
 
 	<br>
-5. Select the repository `<username>/tradeoffanalytics1`.
+5. Select the repository `<username>/tradeoffanalytics`.
 6. Ensure the following options are chosen:
 
 	||||
@@ -92,9 +92,9 @@ permalink: /tradeoff-analytics/
 7. Click the `CREATE` button. Wait for your project to be created.
 8. Click the `EDIT CODE` button. You will be redirected to the Bluemix DevOps' editor. In this tutorial, we will refer to this browser tab as `DEVOPS-EDITOR TAB`.
 
-	The editor shows the working directory (and not the GitHub repository you forked earlier).  The working directory is very similar to a local directory in your hard drive.  In fact, when you chose to link the existing `<username>/tradeoffanalytics1` remote repository in an earlier step, you basically instructed Bluemix DevOps to clone the said remote repository to the working directory.  This is very similar to cloning the remote repository to a local repository (i.e., the one in a hard drive).
+	The editor shows the working directory (and not the GitHub repository you forked earlier).  The working directory is very similar to a local directory in your hard drive.  In fact, when you chose to link the existing `<username>/tradeoffanalytics` remote repository in an earlier step, you basically instructed Bluemix DevOps to clone the said remote repository to the working directory.  This is very similar to cloning the remote repository to a local repository (i.e., the one in a hard drive).
 
-	However, notice that there are additional files/subdirectories (e.g., `.cfignore` and `launchConfigurations`) that were added in the working directory.  These were added automatically when the Bluemix DevOps project was created.  To sync the working directory with the GitHub repository `<username>/tradeoffanalytics1`, these files/directories need to be pushed to the GitHub remote repository.
+	However, notice that there are additional files/subdirectories (e.g., `.cfignore` and `launchConfigurations`) that were added in the working directory.  These were added automatically when the Bluemix DevOps project was created.  To sync the working directory with the GitHub repository `<username>/tradeoffanalytics`, these files/directories need to be pushed to the GitHub remote repository.
 
 	<br>
 9. On the `DEVOPS-EDITOR TAB`: Click (open in another browser tab) the `Git Repository` icon found on the left side of the screen.  We will refer to this browser tab as `DEVOPS-GIT TAB`.
@@ -136,7 +136,7 @@ permalink: /tradeoff-analytics/
 	||||
 	|---|---|---|
 	| **Input Type** | SCM Repository |
-	| **Git URL** | https://github.com/<username>/tradeoffanalytics1.git |
+	| **Git URL** | https://github.com/<username>/tradeoffanalytics.git |
 	| **Branch** | master |
 	| **Stage Trigger** | Run jobs whenever a change is pushed to Git |
 
@@ -213,7 +213,7 @@ permalink: /tradeoff-analytics/
 	| **Organization** | you may leave the default selection |		
 	| **Space** | dev |	
 	| **Application Name** | blank |		
-	| **Deploy Script** | `#!/bin/bash`<br>`cf push calculator-<your_name> -m 256M -p build/libs/tradeoffanalytics1.war`  |	
+	| **Deploy Script** | `#!/bin/bash`<br>`cf push tradeoffanalytics-<your_name> -m 256M -p build/libs/tradeoffanalytics.war`  |	
 	| **Stop running this stage if this job fails** | checked |
 
 	>**IMPORTANT:** In the `cf push` command, make sure to change `<your_name>` to your name.
@@ -237,7 +237,7 @@ permalink: /tradeoff-analytics/
 
 	Command | Purpose
 	---|---
-	`gradle assemble` | build `tradeoffanalytics1.war`
+	`gradle assemble` | build `tradeoffanalytics.war`
 	`gradle test` | run the JUnit test
 	`cf push` | deploy the web application in Bluemix
 
@@ -355,7 +355,7 @@ Dilemma dilemma = service.dilemmas(problem);
 1. Delete the application in your Bluemix account.
 
 	This will free up some resources which is essential to accommodate new applications and services you want to deploy in the future.
-2. You may retain the Bluemix DevOps project `devops-delivery-pipeline` and your <username>/tradeoffanalytics1 GitHub repository.
+2. You may retain the Bluemix DevOps project `DEVOPS-DELIVERY-PIPELINE` and your <username>/tradeoffanalytics GitHub repository.
 
 	The DevOps project and the GitHub repository are needed in the Bluemix DevOps Services Track and Plan Tutorial.
 
