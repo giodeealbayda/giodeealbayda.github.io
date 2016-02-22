@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Junit Basics
-permalink: /junit-basics/
+title: Tradeof Analytics Tutorial
+permalink: /tradeoff-analytics/
 ---
 
 
@@ -266,14 +266,8 @@ permalink: /junit-basics/
 	```
 	<INSERT OUTPUT HERE>
 	```
-
-
-####Create Bluemix Devops Services Deliver Pipeline based on the Github Repository
-1. Open another web browser tab and login to <a href="http://hub.jazz.net">`Bluemix Devops`</a>.
-2. Click `CREATE PROJECT`.
-3. Name your project `tradeoff-delivery-pipeline`.
-4. Click `Link to an existing Github repository`.
-
+####Analyze the Results
+1. 
 ####Delete the Bluemix Applications
 
 1. Delete the application in your Bluemix account.
