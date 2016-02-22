@@ -263,6 +263,7 @@ permalink: /tradeoff-analytics/
 6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoffanalytics-<your_name>.mybluemix.net/newjsp1.jsp`.
 
 	**Output:**
+	||||
 	|---|---|---|---|
 	|**Choices:**|**Price**|**RAM**|**Screen**|
 	| Galaxy S4 | 50 | 45 | 5 |
