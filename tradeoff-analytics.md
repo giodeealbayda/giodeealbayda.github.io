@@ -264,11 +264,12 @@ permalink: /tradeoff-analytics/
 
 	**Output:**
 	||||
-	|Choices:|Price|RAM|Screen|
-	| **Input Type** | Build Artifacts |
-	| **Stage** | Build Stage |
-	| **Job** | Gradle Assemble |
-	| **Stage Trigger** | Run jobs when the previous stage is completed |
+	|**Choices:**|**Price**|**RAM**|**Screen**|
+	| Galaxy S4 | 50 | 45 | 5 |
+	| iPhone 5 | 99 | 40 | 4 |
+	| MyPhone | 5 | 30000 | 5000 |
+	| LG Optimus G | 10 | 300 | 5 |
+	| | | | **Analyze** |
 	
 ####Analyze how the Tradeoff Analytics Service Works
 
