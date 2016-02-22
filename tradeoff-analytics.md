@@ -20,12 +20,12 @@ You will download a copy of sample application that you will deploy in your Blue
 1. Open a terminal window and go to the `tradeoff-analytics` directory.
 
 2. Login to your Bluemix account using the cf tool.
-``` text
+``` 
 cf login -a https://api.ng.bluemix.net -s dev
 ```
 <br>
 3. Upload the sample application to your Bluemix account.
-``` text
+``` 
 cf push tradeoff-analytics-< your_name > -m 256M -p tradeoff-analytics.war
 ```
 <br>
@@ -52,8 +52,98 @@ The web application is composed of only one webpage wherein the user is allowed 
 1. Click the `Analyze` button in order to process the data.
 2. The processed JSON will be presented on the screen. The top choice will have a value of `FRONT` while the others that does not match the category will have `EXCLUDED`.
 
-```text
-{ "problem": { "columns": [ { "key": "price", "type": "numeric", "goal": "min", "is_objective": true, "range": { "low": 0.0, "high": 100.0 } }, { "key": "screen", "type": "numeric", "goal": "max", "is_objective": true }, { "key": "ram", "type": "numeric", "goal": "max", "is_objective": false } ], "options": [ { "description_html": "", "key": "1", "name": "Galaxy S4", "values": { "price": 50.0, "screen": 5.0, "ram": 45.0 } }, { "description_html": "", "key": "2", "name": "iPhone 5", "values": { "price": 99.0, "screen": 4.0, "ram": 40.0 } }, { "description_html": "", "key": "3", "name": "MyPhone", "values": { "price": 5.0, "screen": 5000.0, "ram": 30000.0 } }, { "description_html": "", "key": "4", "name": "LG Optimus G", "values": { "price": 10.0, "screen": 5.0, "ram": 300.0 } } ], "subject": "phone" }, "resolution": { "solutions": [ { "solution_ref": "1", "status": "EXCLUDED" }, { "solution_ref": "2", "status": "EXCLUDED" }, { "solution_ref": "3", "status": "FRONT" }, { "solution_ref": "4", "status": "EXCLUDED" } ] } }
+```
+{
+  "problem": {
+    "columns": [
+    {
+     "key": "price",
+     "type": "numeric",
+     "goal": "min",
+     "is_objective": true,
+     "range": {
+       "low": 0.0,
+       "high": 100.0
+     }
+    },
+    {
+     "key": "screen",
+     "type": "numeric",
+     "goal": "max",
+     "is_objective": true
+    },
+    {
+     "key": "ram",
+     "type": "numeric",
+     "goal": "max",
+     "is_objective": false
+     }
+    ],
+    "options": [
+     {
+      "description_html": "",
+      "key": "1",
+      "name": "Galaxy S4",
+      "values": {
+        "price": 50.0,
+        "screen": 5.0,
+        "ram": 45.0
+       }
+     },
+    {
+     "description_html": "",
+     "key": "2",
+     "name": "iPhone 5",
+     "values": {
+       "price": 99.0,
+       "screen": 4.0,
+       "ram": 40.0
+      }
+     },
+     {
+      "description_html": "",
+      "key": "3",
+      "name": "MyPhone",
+      "values": {
+        "price": 5.0,
+        "screen": 5000.0,
+        "ram": 30000.0
+        }
+      },
+      { 
+       "description_html": "",
+       "key": "4",
+       "name": "LG Optimus G",
+       "values": {
+         "price": 10.0,
+         "screen": 5.0,
+         "ram": 300.0
+          }
+       }
+      ],
+      "subject": "phone"
+     },
+     "resolution": {
+       "solutions": [
+        {
+          "solution_ref": "1",
+          "status": "EXCLUDED"
+        }, 
+        { 
+          "solution_ref": "2",
+          "status": "EXCLUDED"
+        },
+        { 
+          "solution_ref": "3",
+          "status": "FRONT"
+        },
+        { 
+          "solution_ref": "4",
+          "status": "EXCLUDED"
+        }
+     ]
+   }
+}
 ```
 It can be seen that the objects are passed together with their corresponding values. Since the RAM and Screen value of `MyPhone` is the best it will be compared to the other phones, it is the top choice returned by the service.
 
