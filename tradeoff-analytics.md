@@ -4,9 +4,6 @@ title: Tradeof Analytics Tutorial
 permalink: /tradeoff-analytics/
 ---
 
-
-##Tradeoff Analytics Tutorial
-
 Download PPT Presentation [here](somewhere).
 Access Git Repository [here](https://github.com/giodeealbayda/tradeoff-analytics.git).
 
