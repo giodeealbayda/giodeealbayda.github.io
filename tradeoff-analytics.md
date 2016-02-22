@@ -8,7 +8,7 @@ permalink: /junit-basics/
 ##Tradeoff Analytics Tutorial
 
 > In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
-
+<br>
 >Access Git Repository <a href="http://github.com/giodeealbayda/tradeoffanalytics1.git">here</a>.
 
 ####Copy the Github Repository
