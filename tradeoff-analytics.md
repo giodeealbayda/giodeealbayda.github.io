@@ -369,7 +369,9 @@ The output of the service is generated because of the functions of the Tradeoff 
 Problem problem = new Problem("phone");
 ```
 <br>
+
 2.  After initializing the `Problem`, we need to define the objectives my creating an ArrayList of `Column`.  Initialization of `Column` and its objectives are shown below:
+
 ```
 List <Column> columns = new ArrayList<Column>();
 
@@ -381,7 +383,7 @@ columns.add(new NumericColumn().withRange(0,100).withKey(price).withGoal(Goal.MI
 
 >**Important:**
 >`withRange(low,high)` means that the value needs to match the range in order to qualify.
->`withGoal(Goal.MIN **OR** Goal.MAX)` means that the direction for the column. `MIN` indicates that the goal is to minimize the objective while `MAX` indicates that the goal is to maximize the objective.
+>`withGoal(Goal.MIN `OR` Goal.MAX)` means that the direction for the column. `MIN` indicates that the goal is to minimize the objective while `MAX` indicates that the goal is to maximize the objective.
 >**Goal** is meaningful only for columns for which have `.withObjective(true)`.  By default, the value of `Goal` is `MAX`.
 
 <br>
