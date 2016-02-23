@@ -242,6 +242,14 @@ permalink: /tradeoff-analytics/
 	| LG Optimus G | 10 | 300 | 5 |
 	| | | | **Analyze** |
 
+	Choices | Price | RAM | Screen
+	---|---|---|---
+	Galaxy S4 | 50 | 45 | 5
+	iPhone 5 | 99 | 40 | 4
+	MyPhone | 5 | 30000 | 5000 
+	LG Optimus G | 10 | 300 | 5 
+	| | | **Analyze** 
+
 >**Important:**
 >Notice that when you click the `Analyze` button, you will not see the result. This is because the Tradeoff Analytics Service is not yet bound to the web application.
 
