@@ -57,7 +57,7 @@ permalink: /tradeoff-analytics/
 ####Create a Bluemix DevOps Project based on the Github Repository
 1. Open another web browser tab and login to [Bluemix DevOps](https://hub.jazz.net).
 2. Click `CREATE PROJECT`.
-3. Name your project `tradeoff-analytics-giodee`.
+3. Name your project `tradeoff-analytics-< your_name >`.
 4. Clink `Link to an existing GitHub repository`.
 	>If this is the first time you will link a Bluemix DevOps project to a GitHub repository, you will be asked to authorize your Bluemix DevOps account to access your GitHub account.  Proceed with confirming access.
 
@@ -186,7 +186,7 @@ permalink: /tradeoff-analytics/
 	| **Target** | IBM Bluemix US South - https://api.ng.bluemix.net |		
 	| **Organization** | you may leave the default selection |		
 	| **Space** | dev |	
-	| **Application Name** | tradeoff-analytics-giodee |		
+	| **Application Name** | tradeoff-analytics-< your_name > |		
 	| **Deploy Script** | `#!/bin/bash`<br>`cf push tradeoff-analytics-<your_name> -m 512M -p build/libs/tradeoff-analytics.war`  |	
 	| **Stop running this stage if this job fails** | checked |
 
