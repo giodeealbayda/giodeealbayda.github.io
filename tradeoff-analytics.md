@@ -33,16 +33,16 @@ permalink: /tradeoff-analytics/
 	|----build.gradle
 	|
 	|----src/
-	|	|----main/
-	|		 |----java/
-	|		 |	  |----Connector/
-	|		 |	  |		|----Connector.java
-	|		 |	  |
-	|		 |	  |----Servlet/
-	|		 |		      |----TradeOffServlet.java
-	|		 |
-	|		 |----webapp/
-	|			    |----home.jsp
+		|----main/
+			 |----java/
+			 |	  |----Connector/
+			 |	  |		|----Connector.java
+			 |	  |
+			 |	  |----Servlet/
+			 |		      |----TradeOffServlet.java
+			 |
+			 |----webapp/
+				    |----home.jsp
 	```
 	<br>
 	
