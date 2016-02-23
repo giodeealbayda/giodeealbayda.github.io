@@ -232,15 +232,6 @@ permalink: /tradeoff-analytics/
 5. Open another web browser tab. We will refer to this browser as the `TRADEOFFANALYTICS-APP TAB`.
 6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoff-analytics-<your_name>.mybluemix.net/home.jsp`.
 
-	**Output:**
-	||||||||
-	|---|---|---|---|
-	|**Choices:**|**Price**|**RAM**|**Screen**|
-	| Galaxy S4 | 50 | 45 | 5 |
-	| iPhone 5 | 99 | 40 | 4 |
-	| MyPhone | 5 | 30000 | 5000 |
-	| LG Optimus G | 10 | 300 | 5 |
-	| | | | **Analyze** |
 
 	Choices | Price | RAM | Screen
 	---|---|---|---
@@ -248,7 +239,7 @@ permalink: /tradeoff-analytics/
 	iPhone 5 | 99 | 40 | 4
 	MyPhone | 5 | 30000 | 5000 
 	LG Optimus G | 10 | 300 | 5 
-	| | | **Analyze** 
+	| | | | **Analyze** 
 
 >**Important:**
 >Notice that when you click the `Analyze` button, you will not see the result. This is because the Tradeoff Analytics Service is not yet bound to the web application.
