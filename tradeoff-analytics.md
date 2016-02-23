@@ -10,6 +10,7 @@ permalink: /tradeoff-analytics/
 > In this tutorial you will learn how to create a simple web application that will provide Tradeoff Analytics as its service in analyzing the given data.
 <br>
 >Access Git Repository [here](https://github.com/giodeealbayda/tradeoff-analytics.git).
+<br>
 >Download PPT [here](https://raw.githubusercontent.com/giodeealbayda/giodeealbayda.github.io/master/Tradeoff%20Analytics.pptx)
 
 ####Copy the Github Repository
