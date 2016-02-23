@@ -413,9 +413,9 @@ List<Option> options = new ArrayList<Option>();
             optimusSpecs.put(screen, Double.parseDouble(request.getParameter("screen4")));
             options.add(new Option("4", "LG Optimus G").withValues(optimusSpecs));
 ```
-<br>
+
 4. After initializing the options, we must call the `Dilemma` service in order to get the solution to the problem. We need to pass the `problem` JSON object as a parameter to the `dilemma` object.
-```text
+```
 Dilemma dilemma = service.dilemmas(problem);
 ```
 <br>
