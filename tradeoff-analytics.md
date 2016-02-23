@@ -385,6 +385,7 @@ columns.add(new NumericColumn().withRange(0,100).withKey(price).withGoal(Goal.MI
 
 <br>
 3. We need to define the options to choose by placing the values of each phone in a HashMap. `Option` object defines the fields of the possible options. The specification of options are shown below:
+
 ```
 List<Option> options = new ArrayList<Option>();
             problem.setOptions(options);
@@ -414,7 +415,9 @@ List<Option> options = new ArrayList<Option>();
             options.add(new Option("4", "LG Optimus G").withValues(optimusSpecs));
 ```
 
+<br>
 4. After initializing the options, we must call the `Dilemma` service in order to get the solution to the problem. We need to pass the `problem` JSON object as a parameter to the `dilemma` object.
+
 ```
 Dilemma dilemma = service.dilemmas(problem);
 ```
