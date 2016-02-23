@@ -15,7 +15,7 @@ permalink: /tradeoff-analytics/
 
 ####Copy the Github Repository
 1. Open a web browser tab and login to [Github](https://github.com/). In this tutorial, we will refer to this browser tab as `GITHUB TAB`.
-2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository[https://github.com/giodeealbayda/tradeoff-analytics](https://github.com/giodeealbayda/tradeoff-analytics).
+2. Using the same web browser tab (`GITHUB TAB`), go to the Github repository [https://github.com/giodeealbayda/tradeoff-analytics](https://github.com/giodeealbayda/tradeoff-analytics).
 3. For the repository by clicking the `Fork` button.
 4. Verify that you have successfully forked the repository by checking its name:
 
