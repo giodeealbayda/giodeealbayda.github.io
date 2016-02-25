@@ -42,7 +42,7 @@ permalink: /tradeoff-analytics/
 			 |		      |----TradeOffServlet.java
 			 |
 			 |----webapp/
-				    |----home.jsp
+				    |----newjsp1.jsp
 	```
 	<br>
 	
@@ -50,7 +50,7 @@ permalink: /tradeoff-analytics/
 
 	`src/main/java` contains the Java class `src/main/Connector/Connector.java` which connects the application to the Tradeoff Analytics service. In addition, it contains the `src/main/Servlet/TradeOffServlet.java` which processes the data from the web application. 
 
-	`src/main/webapp` contains the JSP page `src/webapp/home.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
+	`src/main/webapp` contains the JSP page `src/webapp/newjsp1.java` which is the interface of the web application. This is where the value of each data can be manipulated by the user before the data processing
 
 	<br>
 	
@@ -232,7 +232,7 @@ permalink: /tradeoff-analytics/
 	<br>
 	
 5. Open another web browser tab. We will refer to this browser as the `TRADEOFFANALYTICS-APP TAB`.
-6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoff-analytics-<your_name>.mybluemix.net/home.jsp`.
+6. On the `TRADEOFFANALYTICS-APP TAB`: Go to `http://tradeoff-analytics-<your_name>.mybluemix.net/newjsp1.jsp`.
 
 
 	Choices | Price | RAM | Screen
