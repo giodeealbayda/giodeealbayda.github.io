@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tradeof Analytics Tutorial
+title: Tradeoff Analytics Tutorial
 permalink: /tradeoff-analytics/
 ---
 
